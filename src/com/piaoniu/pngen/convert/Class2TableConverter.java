@@ -53,7 +53,9 @@ public class Class2TableConverter {
 			} else if (psiField.getType() instanceof PsiClassType) {
 				column.setType(classTypeMap.get(((PsiClassType)psiField.getType()).getCanonicalText()));
 			}
-			column.setType(DEFAULT_TYPE);
+			if (column.getType() == null) {
+				column.setType(DEFAULT_TYPE);
+			}
 			table.getColumns().add(column);
 		}
 		return table;
