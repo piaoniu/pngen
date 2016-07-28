@@ -42,7 +42,10 @@ public class Class2TableConverter {
 	public Table convert(PsiClass psiClass){
 		Table table = new Table();
 		table.setName(prefix + psiClass.getName());
-		for (PsiField psiField : psiClass.getAllFields()) {
+		for (PsiField psiField : psiClass.getFields()) {
+			if (psiField.getModifierList().hasExplicitModifier("static")){
+				continue;
+			}
 			Column column = new Column();
 			column.setName(psiField.getName());
 			if (psiField.getType() instanceof PsiPrimitiveType) {
