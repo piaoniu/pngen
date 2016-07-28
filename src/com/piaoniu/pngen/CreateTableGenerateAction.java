@@ -3,13 +3,15 @@ package com.piaoniu.pngen;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKeys;
-import com.intellij.openapi.ide.CopyPasteManager;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.piaoniu.pngen.convert.Class2TableConverter;
 import com.piaoniu.pngen.convert.SqlGenerator;
 import com.piaoniu.pngen.model.Table;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 
 import static com.piaoniu.pngen.utils.LogUtils.showError;
@@ -35,9 +37,10 @@ public class CreateTableGenerateAction extends AnAction{
 
 		Table table = class2TableConverter.convert((PsiClass) data);
 		String createSql = sqlGenerator.generate(table);
-		showInfo("生成成功");
-		Transferable transferable = CopyPasteManager.getInstance().getContents();
-		System.out.println(createSql);
+		showInfo("生成成功,sql已复制到剪切板");
+		Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
+		Transferable tText = new StringSelection(createSql);
+		clip.setContents(tText, null);
 	}
 
 
