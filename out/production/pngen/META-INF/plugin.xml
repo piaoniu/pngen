@@ -1,0 +1,42 @@
+<idea-plugin version="2">
+  <id>com.piaoniu.pngen</id>
+  <name>票牛代码生成器</name>
+  <version>1.0</version>
+  <vendor email="yihua.huang@ipiaoniu.com" url="https://piaoniu.io">Piaoniu</vendor>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="102.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <action class="com.piaoniu.pngen.CreateTableGenerateAction" description="Convert Java entity to create table sql" id="ConvertAction"
+            text="Convert Java entity to create table sql">
+      <add-to-group group-id="ToolsMenu"/>
+      <add-to-group anchor="after" group-id="ProjectViewPopupMenu"
+                    relative-to-action="ProjectViewPopupMenuRefactoringGroup"/>
+      <keyboard-shortcut first-keystroke="meta alt A" keymap="$default"/>
+    </action>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
