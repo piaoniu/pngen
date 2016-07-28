@@ -41,7 +41,7 @@ public class Class2TableConverter {
 
 	public Table convert(PsiClass psiClass){
 		Table table = new Table();
-		table.setName(psiClass.getName());
+		table.setName(prefix + psiClass.getName());
 		for (PsiField psiField : psiClass.getAllFields()) {
 			Column column = new Column();
 			column.setName(psiField.getName());

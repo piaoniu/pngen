@@ -1,5 +1,6 @@
 package com.piaoniu.pngen.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public class Table {
 
-	private List<Column> columns;
+	private List<Column> columns = new ArrayList<Column>();
 
 	private String name;
 
