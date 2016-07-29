@@ -36,7 +36,7 @@ public class Class2TableConverter {
 		classTypeMap = new HashMap<String, String>();
 		classTypeMap.put("java.lang.String","VARCHAR(255)");
 		classTypeMap.put("java.math.BigDecimal","DECIMAL(10,2)");
-		classTypeMap.put("java.util.Date","TIMESTAMP");
+		classTypeMap.put("java.util.Date","DATETIME");
 	}
 
 	public Table convert(PsiClass psiClass){
@@ -52,7 +52,7 @@ public class Class2TableConverter {
 				for (PsiElement psiElement : psiField.getDocComment().getDescriptionElements()) {
 					commentAccum.append(psiElement.getText());
 				}
-				column.setComment(commentAccum.toString().replaceAll("\\s+",""));
+				column.setComment(commentAccum.toString().replaceAll("\\n+","").trim());
 			}
 			column.setName(psiField.getName());
 			if (psiField.getType() instanceof PsiPrimitiveType) {
