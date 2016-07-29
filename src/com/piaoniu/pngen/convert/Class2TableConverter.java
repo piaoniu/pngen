@@ -47,6 +47,13 @@ public class Class2TableConverter {
 				continue;
 			}
 			Column column = new Column();
+			if (psiField.getDocComment() != null) {
+				StringBuilder commentAccum = new StringBuilder();
+				for (PsiElement psiElement : psiField.getDocComment().getDescriptionElements()) {
+					commentAccum.append(psiElement.getText());
+				}
+				column.setComment(commentAccum.toString().replaceAll("\\s+",""));
+			}
 			column.setName(psiField.getName());
 			if (psiField.getType() instanceof PsiPrimitiveType) {
 				column.setType(psiPrimitiveTypeMap.get(psiField.getType()));

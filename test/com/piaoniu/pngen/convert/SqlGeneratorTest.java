@@ -19,6 +19,7 @@ public class SqlGeneratorTest {
 		Column column = new Column();
 		column.setName("name");
 		column.setType("VARCHAR(255)");
+		column.setComment("用户名");
 		table.getColumns().add(column);
 		String generate = sqlGenerator.generate(table);
 		System.out.println(generate);

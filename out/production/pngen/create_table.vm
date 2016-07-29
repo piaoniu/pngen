@@ -1,7 +1,7 @@
 CREATE TABLE `${table.name}` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 #foreach( $column in $table.columns )
-`${column.name}` ${column.type},
+`${column.name}` ${column.type} NOT NULL #if($column.comment)COMMENT '$column.comment'#end,
 #end
 `addTime` timestamp NOT NULL DEFAULT '2015-09-15 00:00:00',
 `updateTime` timestamp NOT NULL DEFAULT '2015-09-15 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
